@@ -1,0 +1,34 @@
+#body {
+    background-color: #eae0af;
+}
+#menu {
+    width: 600px;
+    height:800px;
+    margin:8% auto;
+    background-color: #82ad8a; 
+    opacity: .8 ;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border-radius: 3%;
+    font-weight: bold;
+    border-style: double;
+}
+h4 {
+    text-align: left;
+    font-weight: bolder;
+    text-decoration: underline;
+    opacity:.8;
+   
+}
+
+.form-check {
+    text-align: left;
+
+}
+ #cheese {
+ text-align: center;
+ }
+
+ .choices {
+   float:left;
+ }
