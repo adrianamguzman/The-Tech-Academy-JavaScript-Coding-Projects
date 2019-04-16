@@ -144,15 +144,15 @@
                 <h4 id="cheese">Pick Your Cheese</h4>
             </div>
             <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cheeses" id="regular" value="option1">
+                    <input class="form-check-input" type="radio" name="cheeses" id="regular" value="Regular">
                         <label class="form-check-label" for="regular">Regular</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cheeses" id="nocheese" value="option2">
+                    <input class="form-check-input" type="radio" name="cheeses" id="nocheese" value="None">
                     <label class="form-check-label" for="nocheese">None</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="cheeses" id="extra" value="option3">
+                    <input class="form-check-input" type="radio" name="cheeses" id="extra" value="Extra">
                     <label class="form-check-label" for="extra">Extra</label>
                 </div>
                 
@@ -163,23 +163,23 @@
             <h4 id="crust">Pick Your Crust</h4>
         </div>
         <div class="form-check form-check-inline choices">
-                <input class="form-check-input" type="radio" name="crusts" id="plain" value="option1">
+                <input class="form-check-input" type="radio" name="crusts" id="plain" value="Plain">
                     <label class="form-check-label" for="plain">Plain</label>
             </div>
             <div class="form-check form-check-inline choices">
-                <input class="form-check-input" type="radio" name="crusts" id="garlic" value="option2">
+                <input class="form-check-input" type="radio" name="crusts" id="garlic" value="Garlic Butter">
                 <label class="form-check-label" for="garlic">Garlic Butter</label>
             </div>
             <div class="form-check form-check-inline choices">
-                <input class="form-check-input" type="radio" name="crusts" id="cheese" value="option3">
+                <input class="form-check-input" type="radio" name="crusts" id="cheese" value="Cheese Stuffed">
                 <label class="form-check-label" for="cheese">Cheese Stuffed</label>
             </div>
             <div class="form-check form-check-inline choices">
-                    <input class="form-check-input" type="radio" name="crusts" id="spicy" value="option3">
+                    <input class="form-check-input" type="radio" name="crusts" id="spicy" value="Spicy">
                     <label class="form-check-label" for="spicy">Spicy</label>
             </div>
             <div class="form-check form-check-inline choices">
-                        <input class="form-check-input" type="radio" name="crusts" id="house" value="option3">
+                        <input class="form-check-input" type="radio" name="crusts" id="house" value="House Special">
                         <label class="form-check-label" for="house">House Special</label>
             </div>
             
@@ -188,22 +188,22 @@
 
      <!--Sauce-->
      <div>
-            <h4 id="crust">Pick Your Sauce</h4>
+            <h4 id="sauces">Pick Your Sauce</h4>
     </div>
           <div class="form-check form-check-inline choices">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="marinara" value="option1">
+                <input class="form-check-input" type="radio" name="sauces" id="marinara" value="Marinara">
                     <label class="form-check-label" for="marinara">Marinara</label>
             </div>
             <div class="form-check form-check-inline choices">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="" value="option2">
+                <input class="form-check-input" type="radio" name="sauces" id="garlicButter" value="Garlic Butter">
                 <label class="form-check-label" for="garlic">Garlic Butter</label>
             </div>
             <div class="form-check form-check-inline choices">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="cheese" value="option3">
+                <input class="form-check-input" type="radio" name="sauces" id="cheese" value="Cheese Stuffed">
                 <label class="form-check-label" for="cheese">Cheese Stuffed</label>
             </div>
             <div class="form-check form-check-inline choices">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="spicy" value="option3">
+                    <input class="form-check-input" type="radio" name="sauces" id="spicy" value="Spicy">
                     <label class="form-check-label" for="spicy">Spicy</label>
             </div>
     <br><br><br><br>
@@ -256,8 +256,74 @@
                 console.log("selected meat item: ("+meatArray[j].value+")");
 		        text1 = text1+meatArray[j].value+"<br>";
             }
+            var meatCount = selectedMeat.length;
+	        if (meatCount > 1) {
+		    meatTotal = (meatCount - 1);
+	            } else {
+		    meatTotal = 0;
+         };
+        
+         runningTotal = (runningTotal + meatTotal);
+	    console.log("total selected meat items: "+meatCount);
+	    console.log(meatCount+" meat - 1 free meat = "+"$"+meatTotal+".00");
+	    console.log("meat text1: "+text1);
+	    console.log("Purchase Total: "+"$"+runningTotal+".00");
+        getCheese(runningTotal,text1)
         };
-        total.innerHTML= text1;
+
+        function getCheese() {
+            var cheeseTotal = 0;
+	        var cheeseArray = document.getElementsByName("cheeses");
+	        for (var k = 0; k < sizeArray.length; k++) {
+		    if (cheeseArray[k].checked) {
+			var selectedCheese = cheeseArray[k].value;
+			text1 = text1+selectedCheese+"<br>";
+		    }
+	     }
+	        if (selectedCheese == "Extra") {
+		    cheeseTotal = 3;
+       
+	    } else { 
+		    cheeseTotal = 0;
+	    } 
+           runningTotal=(runningTotal+cheeseTotal);
+           getCrust(runningTotal,text1) 
+        };
+
+        function getCrust() {
+            var crustTotal = 0;
+	        var crustArray = document.getElementsByName("crusts");
+	        for (var l = 0; l < sizeArray.length; l++) {
+		    if (crustArray[l].checked) {
+			var selectedCrust = crustArray[l].value;
+			text1 = text1+selectedCrust+"<br>";
+		    }
+	    }
+	        if (selectedCrust == "Cheese Stuffed") {
+		    crustTotal = 3;
+       
+	    } else { 
+		    crustTotal = 0;
+	    } 
+           runningTotal=(runningTotal+crustTotal);
+           getSauce(runningTotal,text1) 
+
+        };
+         function getSauce() {
+            var sauceTotal = 0;
+	        var sauceArray = document.getElementsByName("sauces");
+	        for (var m = 0; m < sauceArray.length; m++) {
+		    if (crustArray[m].checked) {
+			var selectedSauce = sauceArray[m].value;
+			text1 = text1+selectedSauce+"<br>";
+		    }
+         }
+             runningTotal=(runningTotal+sauceTotal)
+             
+         };
+
+          total.innerHTML=runningTotal;
+        
         
 
 
