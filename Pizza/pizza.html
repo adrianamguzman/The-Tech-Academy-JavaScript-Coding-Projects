@@ -85,49 +85,49 @@
             <h4 id="veg">Veggies</h4>
                
             <div class="form-check">
-                          <input class="form-check-input" type="checkbox" name="veggies" value="" id="tomatoes">
+                          <input class="form-check-input" type="checkbox" name="veggies" value="Tomatoes" id="tomatoes">
                           <label class="form-check-label" for="tomatoes">
                            Tomatoes
                            </label>
              </div>
              <div class="form-check">
-                           <input class="form-check-input" type="checkbox" name="veggies" value="" id="onions">
+                           <input class="form-check-input" type="checkbox" name="veggies" value="Onions" id="onions">
                            <label class="form-check-label" for="onions">
                             Onions
                             </label>
              </div>
              <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="veggies" value="" id="olives">
+                            <input class="form-check-input" type="checkbox" name="veggies" value="Olives" id="olives">
                             <label class="form-check-label" for="olives">
                             Olives
                             </label>
              </div>
              <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="veggies" value="" id="greenpeppers" >
+                            <input class="form-check-input" type="checkbox" name="veggies" value="Green Peppers" id="greenpeppers" >
                             <label class="form-check-label" for="greenpeppers">
                             Green Peppers
                             </label>
              </div>
              <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="veggies" value="" id="mushrooms">
+                            <input class="form-check-input" type="checkbox" name="veggies" value="Mushrooms" id="mushrooms">
                             <label class="form-check-label" for="mushroom">
                             Mushrooms
                             </label>
              </div>
              <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="veggies" value="" id="pineapple">
+                            <input class="form-check-input" type="checkbox" name="veggies" value="Pineapple" id="pineapple">
                             <label class="form-check-label" for="pineapple">
                             Pineapple
                             </label>
               </div>
               <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="veggies" value="" id="spinach">
+                            <input class="form-check-input" type="checkbox" name="veggies" value="Spinach" id="spinach">
                             <label class="form-check-label" for="spinach">
                             Spinach
                             </label>
                </div>
                <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="veggies" value="" id="jalepeno">
+                            <input class="form-check-input" type="checkbox" name="veggies" value="Jalapeño" id="jalepeno">
                             <label class="form-check-label" for="jalepeno">
                             Jalapeño
                             </label>
@@ -211,7 +211,7 @@
     <!---/Sauce-->
     <!------Total Cost-------->
      <div id="cart">
-        <button id="total" onclick= getReceipt();> Place Order </button>
+        <button id="total" onclick= "getReceipt()"> Place Order </button>
         
      </div>
 
@@ -246,7 +246,7 @@
 	getMeat(runningTotal,text1); // All three of these variables will be passed on to each function
     
    };
-   function getMeat()
+   function getMeat() {
     var meatTotal = 0;
     var selectedMeat = [];
 	var meatArray = document.getElementsByName("meat");
@@ -262,13 +262,29 @@
 	            } else {
 		    meatTotal = 0;
          };
+        };
         
          runningTotal = (runningTotal + meatTotal);
 	    console.log("total selected meat items: "+meatCount);
 	    console.log(meatCount+" meat - 1 free meat = "+"$"+meatTotal+".00");
 	    console.log("meat text1: "+text1);
 	    console.log("Purchase Total: "+"$"+runningTotal+".00");
-        getCheese(runningTotal,text1)
+        getVeggies(runningTotal,text1);
+        };
+
+        function getVeggies() {
+            var veggiesTotal=0;
+            var selectedVeggies=[]
+            for (var n=0; n=veggiesArray.length; n++) {
+            if (veggiesArrayy[n].checked) {
+                selectedVeggies.push[n].value;
+                console.log("selected veggies item: ("+veggiesArray[n].value+")");
+		        text1 = text1+veggiesArray[n].value+"<br>";
+            }
+            };
+            runningTotal= (runningTotal+veggiesTotal)   
+            getCheese(runningTotal,text1)
+        
         };
 
         function getCheese() {
@@ -323,8 +339,7 @@
          };
 
           total.innerHTML=runningTotal;
-        
-        
+     
 
 
      </script>
