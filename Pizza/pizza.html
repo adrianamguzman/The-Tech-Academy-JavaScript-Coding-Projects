@@ -251,7 +251,7 @@
     var selectedMeat = [];
 	var meatArray = document.getElementsByName("meat");
         for (var j=0; j=meatArray.length; j++) {
-            if (meatArrayy[j].checked) {
+            if (meatArray[j].checked) {
                 selectedMeat.push[j].value;
                 console.log("selected meat item: ("+meatArray[j].value+")");
 		        text1 = text1+meatArray[j].value+"<br>";
@@ -276,7 +276,7 @@
             var veggiesTotal=0;
             var selectedVeggies=[]
             for (var n=0; n=veggiesArray.length; n++) {
-            if (veggiesArrayy[n].checked) {
+            if (veggiesArray[n].checked) {
                 selectedVeggies.push[n].value;
                 console.log("selected veggies item: ("+veggiesArray[n].value+")");
 		        text1 = text1+veggiesArray[n].value+"<br>";
@@ -335,10 +335,11 @@
 		    }
          }
              runningTotal=(runningTotal+sauceTotal)
-             
+             document.getElementById("total").innerHTML = runningTotal+".00";
+            
          };
 
-          total.innerHTML=runningTotal;
+          
      
 
 
